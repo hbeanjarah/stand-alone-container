@@ -1,0 +1,20 @@
+version: '3.0'
+services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      - MYSQL_DATABASE=standalone_mysql
+      - MYSQL_PASSWORD=standalone
+      - MYSQL_USER=standalone
+      - MYSQL_ROOT_PASSWORD=standalone
+    ports:
+      - '3306:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+    volumes:
+      - ./data/standalonemysql:/var/lib/mysql
+volumes:
+  standlonemysql:
+    driver: local
